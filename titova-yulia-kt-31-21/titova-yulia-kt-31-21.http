@@ -1,0 +1,6 @@
+@titova_yulia_kt_31_21_HostAddress = http://localhost:5273
+
+GET {{titova_yulia_kt_31_21_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
