@@ -7,11 +7,11 @@ namespace titova_yulia_kt_31_21.Database
     public class StudentPerfomanceDbContext : DbContext
     {
         //Таблички-лисички
-        DbSet<Student> Students { get; set; }
-        DbSet<Group> Groups { get; set; }
-        DbSet<Exam> Exams { get; set; }
-        DbSet<Test> Tests { get; set; }
-        DbSet<Subject> Subjects { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Exam> Exams { get; set; }
+        public DbSet<Test> Tests { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,8 +23,6 @@ namespace titova_yulia_kt_31_21.Database
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
         }
 
-        public StudentPerfomanceDbContext(DbContextOptions<StudentPerfomanceDbContext> options) : base(options) 
-        { 
-        }
+        public StudentPerfomanceDbContext(DbContextOptions<StudentPerfomanceDbContext> options) : base(options) { }
     }
 }

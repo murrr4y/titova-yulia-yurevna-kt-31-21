@@ -49,18 +49,6 @@ namespace titova_yulia_kt_31_21.Database.Configurations
                 .HasColumnType(ColumnType.Int)
                 .HasComment("ID группы");
 
-            builder.Property(p => p.ExamId)
-                .IsRequired()
-                .HasColumnName("f_exam_id")
-                .HasColumnType(ColumnType.Int)
-                .HasComment("ID оценок за экзамены");
-
-            builder.Property(p => p.TestId)
-                .IsRequired()
-                .HasColumnName("f_test_id")
-                .HasColumnType(ColumnType.Int)
-                .HasComment("ID зачетов");
-
             // Настройка таблицы и связей
             builder.ToTable(TableName)
                 .HasOne(p => p.Group)
@@ -69,27 +57,11 @@ namespace titova_yulia_kt_31_21.Database.Configurations
                 .HasConstraintName("fk_f_group_id")
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(p => p.Exam)
-                .WithMany()
-                .HasForeignKey(p => p.ExamId)
-                .HasConstraintName("fk_f_exam_id")
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(p => p.Test)
-                .WithMany()
-                .HasForeignKey(p => p.TestId)
-                .HasConstraintName("fk_f_test_id")
-                .OnDelete(DeleteBehavior.Cascade);
-
             // Индексы
             builder.HasIndex(p => p.GroupId, $"idx_{TableName}_fk_f_group_id");
-            builder.HasIndex(p => p.ExamId, $"idx_{TableName}_fk_f_exam_id");
-            builder.HasIndex(p => p.TestId, $"idx_{TableName}_fk_f_test_id");
 
             // Автоподгрузка связанных сущностей
             builder.Navigation(p => p.Group).AutoInclude();
-            builder.Navigation(p => p.Exam).AutoInclude();
-            builder.Navigation(p => p.Test).AutoInclude();
         }
     }
 }
