@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
 using titova_yulia_kt_31_21.Database;
+using titova_yulia_kt_31_21.Middlewares;
 using static titova_yulia_kt_31_21.ServiceExtensions.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,8 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
 
     app.UseAuthorization();
 
