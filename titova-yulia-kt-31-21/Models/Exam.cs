@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace titova_yulia_kt_31_21.Models
 {
@@ -12,5 +13,10 @@ namespace titova_yulia_kt_31_21.Models
 
         public Student Student { get; set; }
         public Subject Subject { get; set; }
+
+        public bool IsValidMark()
+        {
+            return (Mark > 1 && Mark < 6);
+        }
     }
 }
